@@ -72,7 +72,6 @@ async function run() {
         //         // for purchase
         //         // GET API
         app.get('/bought', async(req, res)=> {
-            
             const cursor = boughtProducts.find({})
             const bought = await cursor.toArray();
             console.log('bought collection', bought)
@@ -122,11 +121,21 @@ async function run() {
 
         //         // POST API
         //         // reviews
-        app.get('/reviews', async (req, res) => {
+        app.post('/reviews', async (req, res) => {
             const reviews = req.body;
+            console.log(reviews)
             const result = await reviewsCollection.insertOne(reviews);
-            res.json(result);
+            console.log(result)
+            res.json(result)
         })
+        // app.post('/reviews', async (req, res) => {
+        //     const reviews = req.body;
+        //     console.log('hitting', reviews)
+        //     const result = await reviewsCollection.insertOne(reviews);
+        //     console.log(result)
+        //     res.json(result)
+        // })
+
 
 
 
